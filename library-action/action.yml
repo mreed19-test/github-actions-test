@@ -5,11 +5,11 @@ inputs:
     description: 'The AWS env'
     required: true
     default: 'dev'
-  outputs:
-    result:
-      description: 'The result of the command'
-  runs:
-    using: 'docker'
-    image: 'Dockerfile'
-    args:
-      - ${{ inputs.aws-env }}
+outputs:
+  result:
+    description: 'The result of the command'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.aws-env }}
