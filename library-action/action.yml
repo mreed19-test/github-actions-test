@@ -1,0 +1,15 @@
+name: 'Library Actions'
+description: 'Here is where we will have our library actions'
+inputs:
+  aws-env:
+    description: 'The AWS env'
+    required: true
+    default: 'dev'
+  outputs:
+    result:
+      description: 'The result of the command'
+  runs:
+    using: 'docker'
+    image: 'Dockerfile'
+    args:
+      - ${{ inputs.aws-env }}
