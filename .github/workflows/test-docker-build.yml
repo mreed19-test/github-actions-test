@@ -1,0 +1,16 @@
+name: Test Docker Image Build and Github Packages Push
+on:
+  repository_dispatch:
+    types: docker_build
+jobs:
+  test-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Docker Build and Push
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
+          docker build -t docker.pkg.github.com/mreed19/github-actions-test/test-docker:0.0.0 ./actions
+          docker push docker.pkg.github.com/mreed19/github-actions-test/test-docker:0.0.0
