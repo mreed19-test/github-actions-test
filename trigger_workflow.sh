@@ -16,8 +16,6 @@ else
   exit 1
 fi
 
-echo "{\"event_type\": \"$event_type\"}"
-
 curl -H "Accept: application/vnd.github.everest-preview+json" \
   -H "Authorization: token $GITHUB_ACTIONS_TEST_TOKEN" \
   --request POST \
